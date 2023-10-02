@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(Dash());
+            Dash();
+            //StartCoroutine(DashCoroutine());
         }
     }
 
@@ -56,7 +57,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator Dash()
+    public void Dash() {
+        Vector2 dashDirection = new Vector3(1.0f, 0.0f, 0.0f); 
+        if (transform.localScale.x == -1) {
+            dashDirection *= -1;
+        }
+        float dashForce = 10f;
+        rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
+    }
+
+    IEnumerator DashCoroutine()
     {
         Vector2 dashDirection = new Vector3(1.0f, 0.0f, 0.0f); 
         if (transform.localScale.x == -1) {

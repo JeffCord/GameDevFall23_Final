@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class GravitySwitchBehavior : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> gravityAffectedObjects = new List<GameObject>();
-    [SerializeField] private List<GameObject> otherGravitySwitches = new List<GameObject>();
+    // [SerializeField] private List<GameObject> gravityAffectedObjects = new List<GameObject>();
+    // [SerializeField] private List<GameObject> otherGravitySwitches = new List<GameObject>();
+    [SerializeField] private GameObject gravityManagerObj;
+    private GravityManager gravityManager;
+    private List<GameObject> gravityAffectedObjects;
+    private List<GameObject> gravitySwitches;
+
+    void Awake() {
+        gravityManager = gravityManagerObj.GetComponent<GravityManager>();
+        gravityAffectedObjects = gravityManager.gravityAffectedObjects;
+        gravitySwitches = gravityManager.gravitySwitches;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag("Player") || other.CompareTag("Crate")) {
             // go to next level
-            foreach (GameObject currentObject in otherGravitySwitches)
+
+            foreach (GameObject currentObject in gravitySwitches)
             {
                 if (currentObject == null) {
                     continue;
@@ -38,8 +49,6 @@ public class GravitySwitchBehavior : MonoBehaviour
                 Rigidbody2D curRb = currentObject.GetComponent<Rigidbody2D>();
                 curRb.gravityScale *= -1;
             }
-
-            gameObject.SetActive(false);
         }
     }
 }
