@@ -14,8 +14,8 @@ public class TutorialBehavior : MonoBehaviour
     [SerializeField] TextMeshProUGUI tutorialTextUI;
     [SerializeField] GameObject gravityButton1;
     [SerializeField] GameObject gravityButton2;
-    [SerializeField] GameObject unlockButton;
-    [SerializeField] GameObject exitDoor;
+    [SerializeField] public GameObject unlockButton;
+    [SerializeField] public GameObject exitDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -85,8 +85,8 @@ public class TutorialBehavior : MonoBehaviour
         float delay = 2.0f;
         yield return new WaitForSeconds(delay);
         gravityButtonStep = false;
-        exitDoor.SetActive(true);
-        unlockButton.SetActive(true);
         tutorialTextUI.text = "Touch the button with a key to unlock the exit door and complete the tutorial!";
+        // exitDoor.SetActive(true);
+        // unlockButton.SetActive(true);
     }
 }

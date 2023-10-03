@@ -14,6 +14,8 @@ public class TutorialGravitySwitchBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && tutorialBehavior.gravityButtonStep) {
+            tutorialBehavior.exitDoor.SetActive(true);
+            tutorialBehavior.unlockButton.SetActive(true);
             tutorialBehavior.secondGravityButtonHit = true;
         }
     }
