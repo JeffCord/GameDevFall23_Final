@@ -98,7 +98,7 @@ public class TutorialBehavior : MonoBehaviour
     }
 
     IEnumerator GravityButton2Delay() {
-        float delay = 2.0f;
+        float delay = 0.0f;
         yield return new WaitForSeconds(delay);
         gravityButton2Step = false;
         //exitStep = true;
