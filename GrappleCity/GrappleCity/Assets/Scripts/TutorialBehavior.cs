@@ -82,7 +82,7 @@ public class TutorialBehavior : MonoBehaviour
     }
 
     IEnumerator GravityButtonDelay() {
-        float delay = 2.0f;
+        float delay = 0.25f;
         yield return new WaitForSeconds(delay);
         gravityButtonStep = false;
         tutorialTextUI.text = "Touch the button with a key to unlock the exit door and complete the tutorial!";
