@@ -10,7 +10,7 @@ public class TutorialBehavior : MonoBehaviour
     private bool dashStep = false;
     private bool gravityButton1Step = false;
     private bool gravityButton2Step = false;
-    private bool exitStep = false;
+    //private bool exitStep = false;
     [SerializeField] TextMeshProUGUI tutorialTextUI;
     [SerializeField] GameObject gravityButton1;
     [SerializeField] GameObject gravityButton2;
@@ -28,42 +28,29 @@ public class TutorialBehavior : MonoBehaviour
     {
         if (wasdMovementStep) {
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) {
-                wasdMovementStep = false;
-                jumpStep = true;
-                tutorialTextUI.text = "SPACE to jump";
+                StartCoroutine(WasdDelay());
             }
         } 
         else if (jumpStep) {
             if (Input.GetKeyDown(KeyCode.Space)) {
-                jumpStep = false;
-                dashStep = true;
-                tutorialTextUI.text = "LEFT MOUSE BUTTON to dash (on the ground or in the air)";
+                StartCoroutine(JumpDelay());
             }
         }
         else if (dashStep) {
             if (Input.GetMouseButtonDown(0)) {
-                dashStep = false;
-                gravityButton1Step = true;
-                gravityButton1.SetActive(true);
-                tutorialTextUI.text = "Touch the gravity button on the ground to invert gravity";
+                StartCoroutine(DashDelay());
             }
         }
         else if (gravityButton1Step) {
             if (!gravityButton1.activeSelf) {
-                gravityButton1Step = false;
-                gravityButton2Step = true;
-                //gravityButton2.SetActive(true);
-                tutorialTextUI.text = "Touch the gravity button on the ceiling to invert gravity again";
+                //gravityButton2.SetActive(false);
+                StartCoroutine(GravityButton1Delay());
             }
         }
         else if (gravityButton2Step) {
             if (!gravityButton2.activeSelf) {
-                gravityButton2Step = false;
-                exitStep = true;
-                gravityButton1.SetActive(false);
-                unlockButton.SetActive(true);
-                exitDoor.SetActive(true);
-                tutorialTextUI.text = "Touch the button with a key to unlock the exit door and complete the tutorial!";
+                //gravityButton1.SetActive(false);
+                StartCoroutine(GravityButton2Delay());
             }
         }
     }
@@ -74,5 +61,50 @@ public class TutorialBehavior : MonoBehaviour
         yield return new WaitForSeconds(delay);
         wasdMovementStep = true;
         tutorialTextUI.text = "Use WASD keys to move";
+    }
+
+    IEnumerator WasdDelay() {
+        float delay = 2.0f;
+        yield return new WaitForSeconds(delay);
+        wasdMovementStep = false;
+        jumpStep = true;
+        tutorialTextUI.text = "SPACE to jump";
+    }
+
+    IEnumerator JumpDelay() {
+        float delay = 2.0f;
+        yield return new WaitForSeconds(delay);
+        jumpStep = false;
+        dashStep = true;
+        tutorialTextUI.text = "LEFT MOUSE BUTTON to dash (on the ground or in the air)";
+    }
+
+    IEnumerator DashDelay() {
+        float delay = 2.0f;
+        yield return new WaitForSeconds(delay);
+        dashStep = false;
+        gravityButton1Step = true;
+        gravityButton1.SetActive(true);
+        tutorialTextUI.text = "Touch a gravity button to invert gravity";
+    }
+
+    IEnumerator GravityButton1Delay() {
+        float delay = 2.0f;
+        yield return new WaitForSeconds(delay);
+        gravityButton1Step = false;
+        gravityButton2Step = true;
+        //gravityButton2.SetActive(true);
+        //tutorialTextUI.text = "Touch the gravity button on the ceiling to invert gravity again";
+    }
+
+    IEnumerator GravityButton2Delay() {
+        float delay = 2.0f;
+        yield return new WaitForSeconds(delay);
+        gravityButton2Step = false;
+        //exitStep = true;
+        //gravityButton1.SetActive(false);
+        exitDoor.SetActive(true);
+        unlockButton.SetActive(true);
+        tutorialTextUI.text = "Touch the button with a key to unlock the exit door and complete the tutorial!";
     }
 }

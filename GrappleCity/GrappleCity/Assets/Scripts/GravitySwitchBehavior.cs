@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GravitySwitchBehavior : MonoBehaviour
 {
-    // [SerializeField] private List<GameObject> gravityAffectedObjects = new List<GameObject>();
-    // [SerializeField] private List<GameObject> otherGravitySwitches = new List<GameObject>();
     [SerializeField] private GameObject gravityManagerObj;
     private GravityManager gravityManager;
     private List<GameObject> gravityAffectedObjects;
