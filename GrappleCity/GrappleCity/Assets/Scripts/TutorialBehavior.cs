@@ -8,8 +8,8 @@ public class TutorialBehavior : MonoBehaviour
     private bool wasdMovementStep = false;
     private bool jumpStep = false;
     private bool dashStep = false;
-    private bool gravityButton1Step = false;
-    private bool gravityButton2Step = false;
+    public bool gravityButtonStep = false;
+    public bool secondGravityButtonHit = false;
     //private bool exitStep = false;
     [SerializeField] TextMeshProUGUI tutorialTextUI;
     [SerializeField] GameObject gravityButton1;
@@ -41,16 +41,9 @@ public class TutorialBehavior : MonoBehaviour
                 StartCoroutine(DashDelay());
             }
         }
-        else if (gravityButton1Step) {
-            if (!gravityButton1.activeSelf) {
-                //gravityButton2.SetActive(false);
-                StartCoroutine(GravityButton1Delay());
-            }
-        }
-        else if (gravityButton2Step) {
-            if (!gravityButton2.activeSelf) {
-                //gravityButton1.SetActive(false);
-                StartCoroutine(GravityButton2Delay());
+        else if (gravityButtonStep) {
+            if (secondGravityButtonHit) {
+                StartCoroutine(GravityButtonDelay());
             }
         }
     }
@@ -83,26 +76,15 @@ public class TutorialBehavior : MonoBehaviour
         float delay = 2.0f;
         yield return new WaitForSeconds(delay);
         dashStep = false;
-        gravityButton1Step = true;
-        gravityButton1.SetActive(true);
+        gravityButtonStep = true;
+        //gravityButton1.SetActive(true);
         tutorialTextUI.text = "Touch a gravity button to invert gravity";
     }
 
-    IEnumerator GravityButton1Delay() {
+    IEnumerator GravityButtonDelay() {
         float delay = 2.0f;
         yield return new WaitForSeconds(delay);
-        gravityButton1Step = false;
-        gravityButton2Step = true;
-        //gravityButton2.SetActive(true);
-        //tutorialTextUI.text = "Touch the gravity button on the ceiling to invert gravity again";
-    }
-
-    IEnumerator GravityButton2Delay() {
-        float delay = 0.0f;
-        yield return new WaitForSeconds(delay);
-        gravityButton2Step = false;
-        //exitStep = true;
-        //gravityButton1.SetActive(false);
+        gravityButtonStep = false;
         exitDoor.SetActive(true);
         unlockButton.SetActive(true);
         tutorialTextUI.text = "Touch the button with a key to unlock the exit door and complete the tutorial!";

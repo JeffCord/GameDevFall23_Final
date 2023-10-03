@@ -57,14 +57,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // public void Dash() {
-    //     Vector2 dashDirection = new Vector3(1.0f, 0.0f, 0.0f); 
-    //     if (transform.localScale.x == -1) {
-    //         dashDirection *= -1;
-    //     }
-    //     rb.velocity = dashDirection * dashSpeed;
-    // }
-
     IEnumerator DashCoroutine()
     {
         Vector2 dashDirection = new Vector3(1.0f, 0.0f, 0.0f); 

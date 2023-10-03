@@ -758,6 +758,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5390520143594002710, guid: f5260e57da2985b429d85047dd22c43f, type: 3}
+      propertyPath: exitDoor
+      value: 
+      objectReference: {fileID: 1618365991}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -953,9 +957,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5745126482525119672, guid: 1bd6507bcde4e448a9e91511fedf9875, type: 3}
+      propertyPath: nextScene
+      value: Level_02
+      objectReference: {fileID: 0}
     - target: {fileID: 6444368972210235350, guid: 1bd6507bcde4e448a9e91511fedf9875, type: 3}
       propertyPath: m_Name
       value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444368972210235350, guid: 1bd6507bcde4e448a9e91511fedf9875, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

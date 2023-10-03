@@ -26,7 +26,7 @@ public class GravitySwitchBehavior : MonoBehaviour
                     continue;
                 }
 
-                if (currentObject.CompareTag(gameObject.tag)) 
+                if (currentObject != gameObject && currentObject.CompareTag(gameObject.tag)) 
                 {
                     currentObject.SetActive(false);
                 } else {
@@ -47,6 +47,8 @@ public class GravitySwitchBehavior : MonoBehaviour
                 Rigidbody2D curRb = currentObject.GetComponent<Rigidbody2D>();
                 curRb.gravityScale *= -1;
             }
+
+            gameObject.SetActive(false);
         }
     }
 }
