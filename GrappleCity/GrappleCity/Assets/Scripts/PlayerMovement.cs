@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.5f;
 
     public int gravityDir = 1;
+
+    [SerializeField] string currentLevel = "";
 
     void Update(){
         if (Input.GetKey(KeyCode.A)) {
@@ -73,5 +76,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.velocity = Vector2.zero; // Stop the dash after the duration
+    }
+
+ void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Spikes")) {
+            SceneManager.LoadScene(currentLevel);
+        }
     }
 }
