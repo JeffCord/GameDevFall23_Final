@@ -11,7 +11,7 @@ public class SlidingDoorButtonBehavior : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Crate")) {
             gameObject.SetActive(false);
-            slidingDoor.SetActive(false);
+            slidingDoor.SetActive(!slidingDoor.activeSelf);
         }
     }
 }

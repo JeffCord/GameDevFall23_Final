@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3085526806344519108}
   - component: {fileID: 6223369910706360861}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hexagon Pointed-Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2341133546441126430}
   - component: {fileID: 5722042492021681262}
   - component: {fileID: 2708572285670474186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlidingDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8666667, g: 0.7825682, b: 0.45490196, a: 1}
+  m_Color: {r: 1, g: 0.49803922, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -187,7 +187,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ce174fb75753d49639a1fe75208aedc4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

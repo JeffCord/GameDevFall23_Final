@@ -16,10 +16,6 @@ public class PlayerMovement : MonoBehaviour
 
     public int gravityDir = 1;
 
-    [SerializeField] string currentLevel = "";
-
-    [SerializeField] GameObject playerBase;
-
     void Update(){
         if (Input.GetKey(KeyCode.A)) {
             Move(new Vector3(-1,0,0));
@@ -57,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Jump(){
-        //Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
         if (Physics2D.OverlapCircleAll(transform.position-new Vector3(0,gravityDir * .5f,0),0.5f,groundMask).Length > 0) {
             rb.AddForce(new Vector3(0,gravityDir * jumpForce,0),ForceMode2D.Impulse);
         }
@@ -84,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
  void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Spikes")) {
-            SceneManager.LoadScene(currentLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
