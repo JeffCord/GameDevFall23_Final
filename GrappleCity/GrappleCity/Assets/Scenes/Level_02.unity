@@ -42718,6 +42718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnlockButton
       objectReference: {fileID: 0}
+    - target: {fileID: 370405499949466617, guid: f5260e57da2985b429d85047dd22c43f, type: 3}
+      propertyPath: m_TagString
+      value: UnlockButton
+      objectReference: {fileID: 0}
     - target: {fileID: 374542325632265044, guid: f5260e57da2985b429d85047dd22c43f, type: 3}
       propertyPath: exitDoor
       value: 
@@ -42728,11 +42732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3403740627301175456, guid: f5260e57da2985b429d85047dd22c43f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.75
+      value: 17.67
       objectReference: {fileID: 0}
     - target: {fileID: 3403740627301175456, guid: f5260e57da2985b429d85047dd22c43f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.41
+      value: 8.44
       objectReference: {fileID: 0}
     - target: {fileID: 3403740627301175456, guid: f5260e57da2985b429d85047dd22c43f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42964,6 +42968,10 @@ PrefabInstance:
     - target: {fileID: 8416630204125867532, guid: 4ad094e54f434694ea0f8fe89afd37c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941464300749142376, guid: 4ad094e54f434694ea0f8fe89afd37c3, type: 3}
+      propertyPath: jumpForce
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8941464300749142376, guid: 4ad094e54f434694ea0f8fe89afd37c3, type: 3}
       propertyPath: currentLevel

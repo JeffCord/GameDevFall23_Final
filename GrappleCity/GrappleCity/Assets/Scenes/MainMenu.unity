@@ -839,7 +839,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 4013972182227577065, guid: b9bcb902e79dacd4ba8c2f55bcd820f3, type: 2}
   m_audioClip: {fileID: 8300000, guid: 426c277bb7b9bde4d89912f5aefcf728, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.21
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1727,6 +1727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c20aba69e524774e99ef93d67cfb93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!4 &1579016333
 Transform:
   m_ObjectHideFlags: 0

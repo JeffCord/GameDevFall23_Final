@@ -8,6 +8,8 @@ TagManager:
   - GravitySwitch2
   - Crate
   - Spikes
+  - UnlockButton
+  - SlidingDoorButton
   layers:
   - Default
   - TransparentFX

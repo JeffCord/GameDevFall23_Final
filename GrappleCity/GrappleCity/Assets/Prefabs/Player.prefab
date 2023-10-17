@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10.69
-  jumpForce: 14
+  jumpForce: 17
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -325,6 +325,7 @@ MonoBehaviour:
   gravityDir: 1
   dashSound: {fileID: 8300000, guid: 0cc0a5e2f3585254ebc7c1c5b6031353, type: 3}
   jumpSound: {fileID: 8300000, guid: 07dabeeed78b06e4aac84a72a77c25ec, type: 3}
+  unlockSound: {fileID: 8300000, guid: 04b1792d5c0c79b48a9d8059be91ce15, type: 3}
 --- !u!61 &7192481247705892998
 BoxCollider2D:
   m_ObjectHideFlags: 0

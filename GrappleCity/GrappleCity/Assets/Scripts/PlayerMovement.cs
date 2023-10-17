@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioClip dashSound; // Sound to play on mouse click
     public AudioClip jumpSound;
+    public AudioClip unlockSound;
     private AudioSource audioSource;
 
     void Awake(){
@@ -89,6 +90,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Spikes")) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else if (other.CompareTag("UnlockButton")) {
+            audioSource.clip = unlockSound;
+            audioSource.Play();
+        }
+        else if (other.CompareTag("SlidingDoorButton")) {
+            audioSource.clip = unlockSound;
+            audioSource.Play();
         }
     }
 }
