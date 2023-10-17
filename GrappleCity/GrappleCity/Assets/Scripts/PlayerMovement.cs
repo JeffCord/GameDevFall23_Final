@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +16,15 @@ public class PlayerMovement : MonoBehaviour
     public float dashDuration = 0.5f;
 
     public int gravityDir = 1;
+
+    public AudioClip dashSound; // Sound to play on mouse click
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
+
+    void Awake(){
+        audioSource = GetComponent<AudioSource>();   
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update(){
         if (Input.GetKey(KeyCode.A)) {
@@ -33,13 +43,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //Dash();
+            audioSource.clip = dashSound;
+            audioSource.Play();
             StartCoroutine(DashCoroutine());
         }
-    }
-
-    void Awake(){
-        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Move(Vector3 mvec){
@@ -54,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(){
         if (Physics2D.OverlapCircleAll(transform.position-new Vector3(0,gravityDir * .5f,0),0.5f,groundMask).Length > 0) {
+            audioSource.clip = jumpSound;
+            audioSource.Play();
             rb.AddForce(new Vector3(0,gravityDir * jumpForce,0),ForceMode2D.Impulse);
         }
     }

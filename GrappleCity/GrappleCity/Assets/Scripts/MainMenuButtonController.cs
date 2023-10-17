@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonController : MonoBehaviour
 {
+    [SerializeField] AudioClip clickSound;
+    [SerializeField] AudioSource audioSource;
+
+    void Start() {
+
+    }
+
     public void StartButton() {
         SceneManager.LoadScene("Level_01");
     }
