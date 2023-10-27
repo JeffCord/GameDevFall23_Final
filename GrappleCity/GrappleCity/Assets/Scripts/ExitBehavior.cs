@@ -7,12 +7,35 @@ public class ExitBehavior : MonoBehaviour
 {
     public bool isLocked = true;
     [SerializeField] string nextScene;
+    private SpriteRenderer sr;
+    private GameObject exitSign;
+    private ParticleSystem ps;
+    
+    void Awake() {
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        exitSign = gameObject.transform.GetChild(0).gameObject;
+        ps = gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !isLocked) {
-            // go to next level
-            SceneManager.LoadScene(nextScene);
+            sr.color = new Color(0f, 1f, 0f, 1f);
+            exitSign.SetActive(false);
+            other.gameObject.SetActive(false);
+            StartCoroutine(ExitReachedCoroutine());
         }
+    }
+
+    IEnumerator ExitReachedCoroutine() {
+        ps.Play();
+
+        // Wait for the particle system to stop playing
+        while (ps.isPlaying)
+        {
+            yield return null;
+        }
+
+        SceneManager.LoadScene(nextScene);
     }
 }
