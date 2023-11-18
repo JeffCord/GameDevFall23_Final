@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update(){
-        if (isAlive) {
+        if (!PauseMenu.isPaused && isAlive) {
             if (Input.GetKey(KeyCode.A)) {
                 Move(new Vector3(-1,0,0));
                 transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);

@@ -35610,6 +35610,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3874369417485519456, guid: 1bd6507bcde4e448a9e91511fedf9875, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874369417485519456, guid: 1bd6507bcde4e448a9e91511fedf9875, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 10
       objectReference: {fileID: 0}
