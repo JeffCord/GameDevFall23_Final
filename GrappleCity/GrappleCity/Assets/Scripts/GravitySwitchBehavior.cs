@@ -8,17 +8,20 @@ public class GravitySwitchBehavior : MonoBehaviour
     private GravityManager gravityManager;
     private List<GameObject> gravityAffectedObjects;
     private List<GameObject> gravitySwitches;
+    AudioManager audioManager;
 
     void Awake() {
         gravityManager = gravityManagerObj.GetComponent<GravityManager>();
         gravityAffectedObjects = gravityManager.gravityAffectedObjects;
         gravitySwitches = gravityManager.gravitySwitches;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Crate")) {
-            // go to next level
+            
+            audioManager.PlaySFX(audioManager.gravityButtonSound);
 
             foreach (GameObject currentObject in gravitySwitches)
             {

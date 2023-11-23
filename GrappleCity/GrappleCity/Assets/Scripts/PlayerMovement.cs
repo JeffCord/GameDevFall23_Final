@@ -25,17 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
     private ParticleSystem ps;
 
-    public AudioClip dashSound; // Sound to play on mouse click
-    public AudioClip jumpSound;
-    public AudioClip unlockSound;
-    private AudioSource audioSource;
+    AudioManager audioManager;
 
     void Awake(){
         sr = GetComponent<SpriteRenderer>();
-        bc = GetComponent<BoxCollider2D>();
-        audioSource = GetComponent<AudioSource>();   
+        bc = GetComponent<BoxCollider2D>();   
         rb = GetComponent<Rigidbody2D>();
         ps = GetComponent<ParticleSystem>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update(){
@@ -51,13 +48,13 @@ public class PlayerMovement : MonoBehaviour
             }
 
             if(Input.GetKeyDown(KeyCode.Space)){
+                audioManager.PlaySFX(audioManager.jumpSound);
                 Jump();
             }
 
             if (Input.GetMouseButtonDown(0))
             {
-                audioSource.clip = dashSound;
-                audioSource.Play();
+                audioManager.PlaySFX(audioManager.dashSound);
                 StartCoroutine(DashCoroutine());
             }
         }
@@ -75,8 +72,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(){
         if (Physics2D.OverlapCircleAll(transform.position-new Vector3(0,gravityDir * .5f,0),0.5f,groundMask).Length > 0) {
-            audioSource.clip = jumpSound;
-            audioSource.Play();
             rb.AddForce(new Vector3(0,gravityDir * jumpForce,0),ForceMode2D.Impulse);
         }
     }
@@ -105,18 +100,18 @@ public class PlayerMovement : MonoBehaviour
             isAlive = false;
             bc.enabled = false;
             rb.gravityScale = 0;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
             sr.enabled = false;
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            audioManager.PlaySFX(audioManager.deathSound);
             StartCoroutine(DeathCoroutine());
         }
         else if (other.CompareTag("UnlockButton")) {
-            audioSource.clip = unlockSound;
-            audioSource.Play();
+            audioManager.PlaySFX(audioManager.keyButtonSound);
         }
         else if (other.CompareTag("SlidingDoorButton")) {
-            audioSource.clip = unlockSound;
-            audioSource.Play();
+            audioManager.PlaySFX(audioManager.slidingDoorButtonSound);
         }
     }
 

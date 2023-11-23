@@ -10,6 +10,7 @@ TagManager:
   - Spikes
   - UnlockButton
   - SlidingDoorButton
+  - Audio
   layers:
   - Default
   - TransparentFX

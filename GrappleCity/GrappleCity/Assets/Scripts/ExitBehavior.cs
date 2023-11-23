@@ -10,11 +10,13 @@ public class ExitBehavior : MonoBehaviour
     private SpriteRenderer sr;
     private GameObject exitSign;
     private ParticleSystem ps;
+    AudioManager audioManager;
     
     void Awake() {
         sr = gameObject.GetComponent<SpriteRenderer>();
         exitSign = gameObject.transform.GetChild(0).gameObject;
         ps = gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -23,6 +25,7 @@ public class ExitBehavior : MonoBehaviour
             sr.color = new Color(0f, 1f, 0f, 1f);
             exitSign.SetActive(false);
             other.gameObject.SetActive(false);
+            audioManager.PlaySFX(audioManager.exitReachedSound);
             StartCoroutine(ExitReachedCoroutine());
         }
     }
